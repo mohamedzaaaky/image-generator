@@ -127,7 +127,8 @@ const generateImages = async (
 
   const imagePromises = Array.from({ length: imageCount }, async (_, i) => {
     try {
-      const response = await fetch("http://localhost:3000/generate", {
+      const response = await fetch("https://discreet-cobalt-amazonsaurus.glitch.me/generate", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
