@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // خدمة ملفات الواجهة الأمامية
- 
+
 app.use(express.static(path.join(__dirname, "../client")));
 // مسار الـ API
 app.post("/generate", async (req, res) => {
@@ -46,8 +47,6 @@ app.post("/generate", async (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "index.html"));
 });
-
-const path = require("path");
 
 // تقديم ملفات HTML ثابتة من مجلد public أو اسم المجلد اللي فيه HTML
 app.use(express.static(path.join(__dirname, "../client"))); // غيّر المسار حسب مكان ملفات HTML
