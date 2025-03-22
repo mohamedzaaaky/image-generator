@@ -127,7 +127,8 @@ const generateImages = async (
 
   const imagePromises = Array.from({ length: imageCount }, async (_, i) => {
     try {
-      const response = await fetch("/generate", {
+      const response = await fetch("https://jasper-chrome-router.glitch.me/generate", {
+
 
         method: "POST",
         headers: {
