@@ -1,8 +1,8 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-require("dotenv").config();
 const path = require("path");
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,10 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// خدمة ملفات الواجهة الأمامية
-
-app.use(express.static(path.join(__dirname, "../client")));
-// مسار الـ API
+// ✅ راوت توليد الصور
 app.post("/generate", async (req, res) => {
   const { prompt, model, width, height } = req.body;
   const API_KEY = process.env.API_KEY;
@@ -43,14 +40,13 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-
-// تقديم ملفات HTML ثابتة من مجلد public أو اسم المجلد اللي فيه HTML
-app.use(express.static(path.join(__dirname, "../client"))); // غيّر المسار حسب مكان ملفات HTML
-
-// إعداد route للـ GET /
+// ✅ راوت صفحة البداية
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/index.html")); // برضه غيّر المسار لو ملفك مش في client
+  res.sendFile(path.join(__dirname, "../client/index.html"));
 });
+
+// ✅ ملفات ثابتة - خليه آخر حاجة بعد كل الراوتات
+app.use(express.static(path.join(__dirname, "../client")));
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
