@@ -43,10 +43,6 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-// لو حد فتح الرابط مباشرة يرجعه لملف index.html
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "index.html"));
-});
 
 // تقديم ملفات HTML ثابتة من مجلد public أو اسم المجلد اللي فيه HTML
 app.use(express.static(path.join(__dirname, "../client"))); // غيّر المسار حسب مكان ملفات HTML
