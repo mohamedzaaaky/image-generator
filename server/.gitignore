@@ -1,0 +1,19 @@
+# بيئة التطوير
+.env
+
+# مجلدات الاعتماديات
+node_modules/
+
+# ملفات اللوق
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# مجلد التغطية في الاختبارات
+coverage/
+
+# مخلفات نظام التشغيل
+.DS_Store
+Thumbs.db
