@@ -11,8 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 // خدمة ملفات الواجهة الأمامية
-app.use(express.static(path.join(__dirname, "../client/build")));
-
+ 
+app.use(express.static(path.join(__dirname, "../client")));
 // مسار الـ API
 app.post("/generate", async (req, res) => {
   const { prompt, model, width, height } = req.body;
